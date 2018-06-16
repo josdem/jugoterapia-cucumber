@@ -6,8 +6,8 @@ import reactor.core.publisher.Mono;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.jos.dem.springboot.webclient.model.Beverage;
-import com.jos.dem.springboot.webclient.service.BeverageService;
+import com.jos.dem.jugoterapia.cucumber.model.Beverage;
+import com.jos.dem.jugoterapia.cucumber.service.BeverageService;
 
 @Service
 public class BeverageServiceImpl implements BeverageService {

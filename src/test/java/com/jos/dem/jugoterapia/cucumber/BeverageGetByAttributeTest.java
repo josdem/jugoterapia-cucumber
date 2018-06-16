@@ -1,6 +1,5 @@
 package com.jos.dem.jugoterapia.cucumber;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 import com.jos.dem.jugoterapia.cucumber.model.Beverage;
@@ -11,22 +10,19 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import reactor.core.publisher.Mono;
 
-public class BeverageGetByAttributeTest extends SpringIntegrationTest {
+public class BeverageGetByAttributeTest extends BeverageIntegrationTest {
+
+  private Beverage beverage;
 
   @When("^the client wants a beverage$")
-    public void shouldCallBeverageById() throws Exception {
-      Flux<Person> result = executeGet();
-      persons = result.collectList().block();
-    }
+  public void shouldCallBeverageById() throws Exception {
+    Mono<Beverage> result = getBeverageById(35L);
+    beverage = result.block();
+  }
 
   @Then("^the client receives a beverage by id$")
-    public void shouldGetPersons() throws Exception {
-      assertEquals(5 , persons.size());
-      assertTrue(persons.contains(new Person("josdem", "joseluis.delacruz@gmail.com")));
-      assertTrue(persons.contains(new Person("tgrip", "tgrip@email.com")));
-      assertTrue(persons.contains(new Person("edzero", "edzero@email.com")));
-      assertTrue(persons.contains(new Person("skuarch", "skuarch@email.com")));
-      assertTrue(persons.contains(new Person("jeduan", "jeduan@email.com")));
-    }
+  public void shouldGetBeverageById() throws Exception {
+    assertEquals(35L, beverage.getId());
+  }
 
 }
