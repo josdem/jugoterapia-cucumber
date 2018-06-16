@@ -14,7 +14,7 @@ public class BeverageServiceImpl implements BeverageService {
 
   private WebClient client = WebClient.create("http://jugoterapia.josdem.io/jugoterapia-server");
 
-  public Mono<Beverage> getBeverage(Long id){
+  public Mono<Beverage> getById(Long id){
     return client.get()
       .uri("/beverages/{id}", id).accept(APPLICATION_JSON)
       .retrieve()

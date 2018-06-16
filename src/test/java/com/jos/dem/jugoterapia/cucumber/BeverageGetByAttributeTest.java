@@ -1,5 +1,6 @@
 package com.jos.dem.jugoterapia.cucumber;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 import com.jos.dem.jugoterapia.cucumber.model.Beverage;
@@ -23,6 +24,9 @@ public class BeverageGetByAttributeTest extends BeverageIntegrationTest {
   @Then("^the client receives a beverage by id$")
   public void shouldGetBeverageById() throws Exception {
     assertEquals(new Long(35L), beverage.getId());
+    assertEquals("Jugo nutritivo (Zanahoria)", beverage.getName());
+    assertEquals("4 Zanahorias,1 Tallo de apío,1 Pera,5 hojas de espinacas", beverage.getIngredients());
+    assertTrue(beverage.getRecipe().length() > 50);
   }
 
 }
