@@ -22,7 +22,7 @@ public class BeverageGetByAttributeTest extends BeverageIntegrationTest {
 
   @Then("^the client receives a beverage by id$")
   public void shouldGetBeverageById() throws Exception {
-    assertEquals(35L, beverage.getId());
+    assertEquals(new Long(35L), beverage.getId());
   }
 
 }
