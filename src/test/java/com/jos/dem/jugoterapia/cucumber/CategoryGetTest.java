@@ -24,7 +24,10 @@ public class CategoryGetTest extends CategoryIntegrationTest {
   @Then("^the client receives categories$")
   public void shouldGetCategories() throws Exception {
     assertEquals(4 , categories.size());
-    assertTrue(categories.contains(new Category(1L, "Curativos")))
+    assertTrue(categories.contains(new Category(1L, "Curativos")));
+    assertTrue(categories.contains(new Category(2L, "Energizantes")));
+    assertTrue(categories.contains(new Category(3L, "Saludables")));
+    assertTrue(categories.contains(new Category(4L, "Estimulantes")));
   }
 
 }

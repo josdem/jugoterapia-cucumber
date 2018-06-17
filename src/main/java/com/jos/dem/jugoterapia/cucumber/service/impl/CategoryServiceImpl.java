@@ -14,7 +14,7 @@ public class CategoryServiceImpl implements CategoryService {
 
   private WebClient client = WebClient.create("http://jugoterapia.josdem.io/jugoterapia-server");
 
-  Flux<Category> getAll() {
+  public Flux<Category> getAll() {
     return client.get()
       .uri("/categories/").accept(APPLICATION_JSON)
       .retrieve()
