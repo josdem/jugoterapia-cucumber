@@ -16,7 +16,7 @@ public class CategoryServiceImpl implements CategoryService {
 
   Flux<Category> getAll() {
     return client.get()
-      uri("/categories/").accept(APPLICATION_JSON)
+      .uri("/categories/").accept(APPLICATION_JSON)
       .retrieve()
       .bodyToFlux(Category.class);
   }
