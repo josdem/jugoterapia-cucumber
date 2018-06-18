@@ -33,3 +33,7 @@ dependencies {
   testCompile('info.cukes:cucumber-spring:1.2.5')
   testCompile('junit:junit:4.12')
 }
+
+test {
+  systemProperties = System.properties
+}
