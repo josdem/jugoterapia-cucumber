@@ -1,6 +1,6 @@
 package com.jos.dem.jugoterapia.cucumber;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.jos.dem.jugoterapia.cucumber.model.Category;
 
@@ -16,7 +16,10 @@ public class CategoryGetTest extends CategoryIntegrationTest {
 
   @Then("^the client receives categories$")
   public void shouldCallCategories() throws Exception {
-    Flux<Category> result = assertTrue(getCategories().map(Category::id).sum() == 10L,  () -> "Sum should be 10");
+    assertTrue(getCategories()
+        .collectList()
+        .block()
+        .size() == 4,  () -> "Should be 4 categories");
   }
 
 }
