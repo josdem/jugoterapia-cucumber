@@ -16,10 +16,15 @@ public class CategoryGetTest extends CategoryIntegrationTest {
 
   @Then("^the client receives categories$")
   public void shouldCallCategories() throws Exception {
-    assertTrue(getCategories()
-        .collectList()
-        .block()
-        .size() == 4,  () -> "Should be 4 categories");
+    List<Category> categories = getCategories()
+      .collectList()
+      .block();
+
+    assertTrue(categories.size() == 4,  () -> "Should be 4 categories");
+    assertTrue(categories.contains(new Category(1L, "Curativos")), () -> "Should contains Curativos category");
+    assertTrue(categories.contains(new Category(2L, "Energizantes")), () -> "Should contains Energizantes category");
+    assertTrue(categories.contains(new Category(3L, "Saludables")), () -> "Should contains Saludables category");
+    assertTrue(categories.contains(new Category(4L, "Estimulantes")), () -> "Should contains Estimulantes category");
   }
 
 }
