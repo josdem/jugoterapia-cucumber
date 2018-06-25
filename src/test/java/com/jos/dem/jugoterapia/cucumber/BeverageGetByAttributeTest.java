@@ -22,7 +22,8 @@ public class BeverageGetByAttributeTest extends BeverageIntegrationTest {
         () -> assertEquals(new Long(35L), beverage.getId(), "Should be 35 id"),
         () -> assertEquals("Jugo nutritivo (Zanahoria)", beverage.getName(), "Should get complete beverage name"),
         () -> assertEquals("4 Zanahorias,1 Tallo de apío,1 Pera,5 hojas de espinacas", beverage.getIngredients(), "Should get complete ingredients"),
-        () -> assertTrue(beverage.getRecipe().length() > 50), "Recipe must be larger than 50 characters");
+        () -> assertTrue(beverage.getRecipe().length() > 50, "Recipe must be larger than 50 characters")
+    );
   }
 
 }
