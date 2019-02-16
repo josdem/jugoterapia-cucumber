@@ -1,4 +1,7 @@
 Feature: I can get categories
-  Scenario: Client makes a call to list categories
+  Scenario: Client list categories
     When I request categories
     Then I validate categories
+  Scenario: Client get English categories
+    When I request categories i18n "en"
+    Then I validate English categories
