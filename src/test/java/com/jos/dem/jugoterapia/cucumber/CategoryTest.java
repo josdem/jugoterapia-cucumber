@@ -2,8 +2,7 @@ package com.jos.dem.jugoterapia.cucumber;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.jos.dem.jugoterapia.cucumber.model.Category;
-
+import java.util.Date;
 import java.util.List;
 
 import cucumber.api.java.en.Then;
@@ -11,10 +10,12 @@ import cucumber.api.java.en.When;
 
 import reactor.core.publisher.Flux;
 
+import com.jos.dem.jugoterapia.cucumber.model.Category;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CategoryGetTest extends CategoryIntegrationTest {
+public class CategoryTest extends CategoryIntegrationTest {
 
   private List<Category> categories;
   private Logger log = LoggerFactory.getLogger(this.getClass());
