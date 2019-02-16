@@ -24,7 +24,7 @@ public class BeverageGetByAttributeTest extends BeverageIntegrationTest {
   @When("I request beverage by id")
   public void shouldRequestBeverageById() throws Exception {
     log.info("Running: I request beverage by id at " + new Date());
-    beverage = getBeverageById(35L).block();
+    beverage = getBeverageById(66L).block();
   }
 
   @Then("I validate beverage data$")
@@ -32,7 +32,7 @@ public class BeverageGetByAttributeTest extends BeverageIntegrationTest {
     log.info("Running: I validate beverage data at " + new Date());
 
     assertAll("beverage",
-        () -> assertEquals(new Long(35L), beverage.getId(), "Should be 35 id"),
+        () -> assertEquals(new Long(66L), beverage.getId(), "Should be 66 id"),
         () -> assertEquals("Jugo nutritivo (Zanahoria)", beverage.getName(), "Should get complete beverage name"),
         () -> assertEquals("4 Zanahorias,1 Tallo de apío,1 Pera,5 hojas de espinacas", beverage.getIngredients(), "Should get complete ingredients"),
         () -> assertTrue(beverage.getRecipe().length() > 50, "Recipe must be larger than 50 characters")
