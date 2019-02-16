@@ -1,5 +1,6 @@
 package com.jos.dem.jugoterapia.cucumber;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
@@ -33,10 +34,12 @@ public class CategoryTest extends CategoryIntegrationTest {
     log.info("Running: I validate categories at " + new Date());
 
     assertTrue(categories.size() == 4,  () -> "Should be 4 categories");
-    assertTrue(categories.contains(new Category(1L, "Curativos")), () -> "Should contains Curativos category");
-    assertTrue(categories.contains(new Category(2L, "Energizantes")), () -> "Should contains Energizantes category");
-    assertTrue(categories.contains(new Category(3L, "Saludables")), () -> "Should contains Saludables category");
-    assertTrue(categories.contains(new Category(4L, "Estimulantes")), () -> "Should contains Estimulantes category");
+    assertAll("category",
+      () -> assertTrue(categories.contains(new Category(1L, "Curativos")), "Should contains Curativos category"),
+      () -> assertTrue(categories.contains(new Category(2L, "Energizantes")), "Should contains Energizantes category"),
+      () -> assertTrue(categories.contains(new Category(3L, "Saludables")), "Should contains Saludables category"),
+      () -> assertTrue(categories.contains(new Category(4L, "Estimulantes")), "Should contains Estimulantes category")
+    );
   }
 
 }
