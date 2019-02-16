@@ -20,4 +20,8 @@ public class CategoryIntegrationTest {
     return categoryService.getAll();
   }
 
+  Flux<Category> getByLanguage(String language) throws Exception {
+    return categoryService.getByLanguage(language);
+  }
+
 }

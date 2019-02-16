@@ -20,7 +20,7 @@ public class CategoryTest extends CategoryIntegrationTest {
   private List<Category> categories;
   private Logger log = LoggerFactory.getLogger(this.getClass());
 
-  @When("I request categories")
+  @When("I request default categories")
   public void shouldRequestCategories() throws Exception {
     log.info("Running: I request categories at " + new Date());
     categories = getCategories()
@@ -28,7 +28,7 @@ public class CategoryTest extends CategoryIntegrationTest {
       .block();
   }
 
-  @Then("I validate categories")
+  @Then("I validate default categories")
   public void shouldCallCategories() throws Exception {
     log.info("Running: I validate categories at " + new Date());
 

@@ -6,5 +6,6 @@ import com.jos.dem.jugoterapia.cucumber.model.Category;
 public interface CategoryService {
 
   Flux<Category> getAll();
+  Flux<Category> getByLanguage(String language);
 
 }

@@ -23,4 +23,11 @@ public class CategoryServiceImpl implements CategoryService {
       .bodyToFlux(Category.class);
   }
 
+  public Flux<Category> getByLanguage(String language) {
+    return client.get()
+      .uri("/categories/" + language).accept(APPLICATION_JSON)
+      .retrieve()
+      .bodyToFlux(Category.class);
+  }
+
 }
