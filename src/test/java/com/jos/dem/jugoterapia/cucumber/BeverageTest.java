@@ -18,13 +18,15 @@ import org.slf4j.LoggerFactory;
 
 public class BeverageTest extends BeverageIntegrationTest {
 
+  private Long id;
   private Beverage beverage;
   private Logger log = LoggerFactory.getLogger(this.getClass());
 
-  @When("I request beverage by id")
-  public void shouldRequestBeverageById() throws Exception {
+  @When("^I request beverage by id \"([^\"]*)\"$")
+  public void shouldRequestBeverageById(Long id) throws Exception {
     log.info("Running: I request beverage by id at " + new Date());
-    beverage = getBeverageById(66L).block();
+    this.id = id;
+    beverage = getBeverageById(id).block();
   }
 
   @Then("I validate beverage data$")
@@ -32,7 +34,7 @@ public class BeverageTest extends BeverageIntegrationTest {
     log.info("Running: I validate beverage data at " + new Date());
 
     assertAll("beverage",
-        () -> assertEquals(new Long(66L), beverage.getId(), "Should be 66 id"),
+        () -> assertEquals(id, beverage.getId(), "Should be 66 id"),
         () -> assertEquals("Jugo nutritivo (Zanahoria)", beverage.getName(), "Should get complete beverage name"),
         () -> assertEquals("4 Zanahorias,1 Tallo de apío,1 Pera,5 hojas de espinacas", beverage.getIngredients(), "Should get complete ingredients"),
         () -> assertTrue(beverage.getRecipe().length() > 50, "Recipe must be larger than 50 characters")
