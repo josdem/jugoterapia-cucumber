@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class BeverageGetByAttributeTest extends BeverageIntegrationTest {
+public class BeverageTest extends BeverageIntegrationTest {
 
   private Beverage beverage;
   private Logger log = LoggerFactory.getLogger(this.getClass());
