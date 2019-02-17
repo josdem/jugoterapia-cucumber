@@ -15,6 +15,7 @@ package com.jos.dem.jugoterapia.cucumber;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.jos.dem.jugoterapia.cucumber.model.Beverage;
@@ -32,26 +33,23 @@ import org.slf4j.LoggerFactory;
 public class BeverageByKeywordTest extends BeverageIntegrationTest {
 
   private String keyword;
-  private Beverage beverage;
+  private List<Beverage> beverages;
+
   private Logger log = LoggerFactory.getLogger(this.getClass());
 
-  @When("^I request beverage by id \"([^\"]*)\"$")
-  public void shouldRequestBeverageById(Long id) throws Exception {
-    log.info("Running: I request beverage by keyword at " + new Date());
+  @When("^I request beverages by keyword \"([^\"]*)\"$")
+  public void shouldRequestBeverageByKeyword(String keyword) throws Exception {
+    log.info("Running: I request beverages by keyword at " + new Date());
     this.keyword = keyword;
-    beverage = getByKeyword(keyword).block();
+    beverages = getByKeyword(keyword)
+      .collectList()
+      .block();
   }
 
-  @Then("I validate beverage data$")
-  public void shouldGetBeverageById() throws Exception {
-    log.info("Running: I validate beverage data at " + new Date());
-
-    assertAll("beverage",
-        () -> assertEquals(id, beverage.getId(), "Should be 66 id"),
-        () -> assertEquals("Jugo nutritivo (Zanahoria)", beverage.getName(), "Should get complete beverage name"),
-        () -> assertEquals("4 Zanahorias,1 Tallo de apío,1 Pera,5 hojas de espinacas", beverage.getIngredients(), "Should get complete ingredients"),
-        () -> assertTrue(beverage.getRecipe().length() > 50, "Recipe must be larger than 50 characters")
-    );
+  @Then("I validate beverages is not empty$")
+  public void shouldValidateBeveragesNotEmpty() throws Exception {
+    log.info("Running: I validate beverages is not empty at " + new Date());
+    assertFalse(beverages.isEmpty(),  () -> "Should not be empty");
   }
 
 }
