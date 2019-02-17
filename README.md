@@ -16,3 +16,4 @@ gradle test
 
 * http://josdem.io/techtalk/spring/spring_boot_cucumber/
 * http://josdem.io/techtalk/spring/spring_boot_web_client/
+* https://josdem.io/techtalk/sysadmin/travis_configuration/
