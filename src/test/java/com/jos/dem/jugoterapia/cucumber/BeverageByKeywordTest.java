@@ -14,15 +14,16 @@
 package com.jos.dem.jugoterapia.cucumber;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.jos.dem.jugoterapia.cucumber.model.Beverage;
 
 import java.util.Date;
 import java.util.List;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import reactor.core.publisher.Mono;
@@ -50,6 +51,18 @@ public class BeverageByKeywordTest extends BeverageIntegrationTest {
   public void shouldValidateBeveragesNotEmpty() throws Exception {
     log.info("Running: I validate beverages is not empty at " + new Date());
     assertFalse(beverages.isEmpty(),  () -> "Should not be empty");
+  }
+
+  @And("I validate a beverage contains \"([^\"]*)\"$")
+  public void shouldValidateBeverageContainsIngredient(String ingredient) throws Exception {
+    log.info("Running: I validate a beverage contains ingredient at " + new Date());
+
+    Beverage beverage = beverages.stream()
+      .filter(b-> b.getIngredients().toLowerCase().contains(ingredient))
+      .findAny()
+      .orElse(null);
+
+    assertNotNull(beverage,  () -> "Should contain ingredient");
   }
 
 }

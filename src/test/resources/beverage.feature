@@ -5,3 +5,4 @@ Feature: I can get a beverage by id
   Scenario: Client can get beverages by keyword
     When I request beverages by keyword "pear"
     Then I validate beverages is not empty
+      And I validate a beverage contains "pear"
