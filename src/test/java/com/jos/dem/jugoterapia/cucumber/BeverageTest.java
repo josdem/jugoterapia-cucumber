@@ -39,7 +39,7 @@ public class BeverageTest extends BeverageIntegrationTest {
   public void shouldRequestBeverageById(Long id) throws Exception {
     log.info("Running: I request beverage by id at " + new Date());
     this.id = id;
-    beverage = getBeverageById(id).block();
+    beverage = getById(id).block();
   }
 
   @Then("I validate beverage data$")
