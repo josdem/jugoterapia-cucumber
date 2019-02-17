@@ -3,6 +3,8 @@ package com.jos.dem.jugoterapia.cucumber.service.impl;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
+
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -21,6 +23,13 @@ public class BeverageServiceImpl implements BeverageService {
       .uri("/beverages/{id}", id).accept(APPLICATION_JSON)
       .retrieve()
       .bodyToMono(Beverage.class);
+  }
+
+  public Flux<Beverage> getByKeyword(String keyword){
+    return client.get()
+      .uri("/beverages/ingredients/{keyword}", keyword).accept(APPLICATION_JSON)
+      .retrieve()
+      .bodyToFlux(Beverage.class);
   }
 
 }
