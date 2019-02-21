@@ -19,6 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Date;
 import java.util.List;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -33,6 +35,11 @@ public class CategoryTest extends CategoryIntegrationTest {
 
   private List<Category> categories;
   private Logger log = LoggerFactory.getLogger(this.getClass());
+
+  @Before
+  public void setup() {
+    log.info("Before any test execution");
+  }
 
   @When("I request default categories")
   public void shouldRequestCategories() throws Exception {
@@ -53,6 +60,11 @@ public class CategoryTest extends CategoryIntegrationTest {
       () -> assertTrue(categories.contains(new Category(3L, "Saludables")), "Should contains Saludables category"),
       () -> assertTrue(categories.contains(new Category(4L, "Estimulantes")), "Should contains Estimulantes category")
     );
+  }
+
+  @After
+  public void tearDown() {
+    log.info("After all test execution");
   }
 
 }
