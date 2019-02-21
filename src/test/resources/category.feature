@@ -1,3 +1,4 @@
+@SmokeTest
 Feature: I can get categories
   Scenario: Client list categories
     When I request default categories
