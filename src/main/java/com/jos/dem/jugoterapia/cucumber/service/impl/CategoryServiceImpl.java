@@ -11,11 +11,12 @@
   limitations under the License.
 */
 
-package com.jos.dem.jugoterapia.cucumber.service;
+package com.jos.dem.jugoterapia.cucumber.service.impl;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 import reactor.core.publisher.Flux;
+
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.reactive.function.client.WebClient;
