@@ -23,9 +23,12 @@ import com.jos.dem.jugoterapia.cucumber.model.Beverage;
 import java.util.Date;
 import java.util.List;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
 import reactor.core.publisher.Mono;
 
 import org.slf4j.Logger;
@@ -37,6 +40,11 @@ public class BeverageByKeywordTest extends BeverageIntegrationTest {
   private List<Beverage> beverages;
 
   private Logger log = LoggerFactory.getLogger(this.getClass());
+
+  @Before
+  public void setup() {
+    log.info("Before any test execution");
+  }
 
   @When("^I request beverages by keyword \"([^\"]*)\"$")
   public void shouldRequestBeverageByKeyword(String keyword) throws Exception {
@@ -63,6 +71,11 @@ public class BeverageByKeywordTest extends BeverageIntegrationTest {
       .orElse(null);
 
     assertNotNull(beverage,  () -> "Should contain ingredient");
+  }
+
+  @After
+  public void tearDown() {
+    log.info("After all test execution");
   }
 
 }

@@ -19,6 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Date;
 import java.util.List;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -33,6 +35,11 @@ public class CategoryByEnglishTest extends CategoryIntegrationTest {
 
   private List<Category> categories;
   private Logger log = LoggerFactory.getLogger(this.getClass());
+
+  @Before
+  public void setup() {
+    log.info("Before any test execution");
+  }
 
   @When("^I request categories i18n \"([^\"]*)\"$")
   public void shouldRequestEnglishCategories(String language) throws Exception {
@@ -54,6 +61,11 @@ public class CategoryByEnglishTest extends CategoryIntegrationTest {
       () -> assertTrue(categories.contains(new Category(7L, "Healthy")), () -> "Should contains Healthy category"),
       () -> assertTrue(categories.contains(new Category(8L, "Boost")), () -> "Should contains Boost category")
     );
+  }
+
+  @After
+  public void tearDown() {
+    log.info("After all test execution");
   }
 
 }

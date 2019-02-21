@@ -17,14 +17,17 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.jos.dem.jugoterapia.cucumber.model.Beverage;
-
 import java.util.Date;
 import java.util.List;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
 import reactor.core.publisher.Mono;
+
+import com.jos.dem.jugoterapia.cucumber.model.Beverage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +36,14 @@ public class BeverageTest extends BeverageIntegrationTest {
 
   private Long id;
   private Beverage beverage;
+
   private Logger log = LoggerFactory.getLogger(this.getClass());
+
+  @Before
+  public void setup() {
+    log.info("Before any test execution");
+  }
+
 
   @When("^I request beverage by id \"([^\"]*)\"$")
   public void shouldRequestBeverageById(Long id) throws Exception {
@@ -52,6 +62,11 @@ public class BeverageTest extends BeverageIntegrationTest {
         () -> assertEquals("4 Zanahorias,1 Tallo de apío,1 Pera,5 hojas de espinacas", beverage.getIngredients(), "Should get complete ingredients"),
         () -> assertTrue(beverage.getRecipe().length() > 50, "Recipe must be larger than 50 characters")
     );
+  }
+
+  @After
+  public void tearDown() {
+    log.info("After all test execution");
   }
 
 }
