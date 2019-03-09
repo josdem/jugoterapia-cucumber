@@ -4,9 +4,8 @@ plugins {
   id 'java'
 }
 
-apply plugin: 'io.spring.dependency-management'
-
 def junitJupiterVersion = '5.4.0'
+def cucumberVersion = '1.2.5'
 
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
@@ -27,9 +26,9 @@ dependencies {
   annotationProcessor('org.projectlombok:lombok')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('io.projectreactor:reactor-test')
-  testImplementation('info.cukes:cucumber-java:1.2.5')
-  testImplementation('info.cukes:cucumber-junit:1.2.5')
-  testImplementation('info.cukes:cucumber-spring:1.2.5')
+  testImplementation("info.cukes:cucumber-java:$cucumberVersion")
+  testImplementation("info.cukes:cucumber-junit:$cucumberVersion")
+  testImplementation("info.cukes:cucumber-spring:$cucumberVersion")
   testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
   testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
 }
