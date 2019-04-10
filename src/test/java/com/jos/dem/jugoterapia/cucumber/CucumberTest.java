@@ -13,10 +13,25 @@
 
 package com.jos.dem.jugoterapia.cucumber;
 
+import java.io.File;
+
+import com.vimalselvam.cucumber.listener.Reporter;
+
 import org.junit.runner.RunWith;
+import org.junit.AfterClass;
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources")
-public class CucumberTest {}
+@CucumberOptions(features = "src/test/resources",
+                 format = {"pretty","json:target/reports/cucumber.json"},
+                 plugin = "com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:target/reports/report.html")
+public class CucumberTest {
+
+  @AfterClass
+  public static void teardown() {
+    Reporter.loadXMLConfig(new File("src/test/resources/config/extent-config.xml"));
+  }
+
+}
