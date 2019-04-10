@@ -25,8 +25,8 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources",
-                 format = {"pretty","json:target/reports/cucumber.json"},
-                 plugin = "com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:target/reports/report.html")
+                 format = {"pretty","json:build/reports/cucumber.json"},
+                 plugin = "com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:build/reports/report.html")
 public class CucumberTest {
 
   @AfterClass
