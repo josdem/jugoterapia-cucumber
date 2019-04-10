@@ -6,6 +6,7 @@ plugins {
 
 def junitJupiterVersion = '5.4.0'
 def cucumberVersion = '1.2.5'
+def extentReportsVersion = '3.1.1'
 
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
@@ -31,4 +32,6 @@ dependencies {
   testImplementation("info.cukes:cucumber-spring:$cucumberVersion")
   testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
   testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
+  testImplementation("com.aventstack:extentreports:$extentReportsVersion")
+  testImplementation("com.vimalselvam:cucumber-extentsreport:$extentReportsVersion")
 }
