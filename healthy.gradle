@@ -21,5 +21,7 @@ task check {
     Thread.sleep(60 * 1000)
     counter++
   }
+
+  throw new RuntimeException("Waiting for service reach timeout")
 }
 
