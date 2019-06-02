@@ -22,6 +22,8 @@ task check {
     counter++
   }
 
-  throw new RuntimeException("Waiting for service reach timeout")
+  if(counter == threshold){
+    throw new RuntimeException("Waiting for service reach timeout")
+  }
 }
 
